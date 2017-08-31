@@ -11,11 +11,11 @@ router.get("/campgrounds", function(req, res){
         console.log("OH NO, ERROR");
         console.log(err);
     } else {
-        res.render("campgrounds/index", {campgrounds: allCampgrounds});
+        res.render("campgrounds/index", {campgrounds: allCampgrounds, page: 'campgrounds'});
     }
     
     });
-   //res.render("campgrounds.ejs", {campgrounds: campgrounds}); 
+   
 });
 
 //CREATE- add new campground to DB

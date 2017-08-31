@@ -11,7 +11,7 @@ router.get("/", function(req, res){
 
 //Show register form
 router.get("/register", function(req, res){
-   res.render("register"); 
+   res.render("register", {page: 'register'}); 
 });
 
 //Handle Signup logic
@@ -20,7 +20,6 @@ router.post("/register", function(req, res){
   User.register(newUser, req.body.password, function(err, user){
       if(err){
          req.flash("error", err.message);
-         //return res.render('register');
          return res.redirect("/register");
       } 
       passport.authenticate("local")(req, res, function(){
@@ -33,7 +32,7 @@ router.post("/register", function(req, res){
 //LOGIN ROUTES
 //render login form
 router.get("/login", function(req, res){
-   res.render("login"); 
+   res.render("login", {page: 'login'}); 
 });
 
 //login logic
@@ -53,12 +52,6 @@ router.get("/logout", function(req, res){
    res.redirect("/campgrounds");
 });
 
-//middleware
-// function isLoggedIn(req, res, next){
-//    if(req.isAuthenticated()){
-//       return next();
-//    }
-//    res.redirect("/login");
-// }
+
 
 module.exports = router;
